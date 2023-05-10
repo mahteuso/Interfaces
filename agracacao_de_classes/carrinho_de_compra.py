@@ -1,17 +1,18 @@
 from interface import CarrinhoInterface
-from produtos import Produto
-from servicos import Servico
 from typing import Type
+
 
 class Compras:
     def __init__(self):
-        self.produto = Produto('simplas', 1)
-        self.servico = Servico('simples', 2)
+        self._compras = {}
 
     def adicionar_compra(self, produto: Type[CarrinhoInterface]) -> None:
-        produto.adicionar_produto_ou_servico(produto)
+        produto = str(produto)
+        print(produto)
+        self._compras.update(produto)
+        for compra, valor in self._compras.items():
+            print(compra, ':', valor)
 
-    def finalizar(self):
-        self.produto.finalizar_compras()
-        self.servico.finalizar_compras()
+
+
 
